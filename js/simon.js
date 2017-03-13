@@ -1,5 +1,7 @@
 function Simon(start) {
   this.correctSequence = [start];
+  this.inTime = true;
+  this.timer;
 }
 
 Simon.prototype.randomize = function() {
@@ -25,5 +27,16 @@ Simon.prototype.compareArrays = function(playerArr) {
 
 Simon.prototype.clear = function() {
   this.correctSequence = ["red"];
+}
+
+Simon.prototype.outOfTime = function() {
+  this.inTime = false;
+  console.log("Out of Time!");
+}
+
+Simon.prototype.resetTimer = function() {
+  this.inTime = true;
+  clearInterval(this.timer);
+  this.timer = setInterval(this.outOfTime, 8000);
 }
 exports.simonModule = Simon;

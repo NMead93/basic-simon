@@ -19,12 +19,14 @@ $(document).ready(function() {
   $("#simon-form").submit(function(event) {
     event.preventDefault();
 
-    if (newGame.compareArrays(player)) {
-      newGame.randomize();
+    if (newGame.compareArrays(player) && newGame.inTime) {
       console.log("winner");
+      newGame.randomize();
+      newGame.resetTimer();
     } else {
-      newGame.clear();
       console.log("loser");
+      newGame.clear();
+      clearInterval(newGame.timer);
     }
     player = [];
   });
