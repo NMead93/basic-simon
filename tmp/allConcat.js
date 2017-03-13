@@ -20,10 +20,12 @@ $(document).ready(function() {
     event.preventDefault();
 
     if (newGame.compareArrays(player)) {
+      newGame.randomize();
       console.log("winner");
     } else {
+      newGame.clear();
       console.log("loser");
     }
-
+    player = [];
   });
 });
